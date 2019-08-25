@@ -1,0 +1,107 @@
+<div class="container">
+  <div class="row">
+    <!-- <div class="col"></div> -->
+    <div class="col" style="text-align:center ;">
+      <!-- style="font-family: unset;
+        color: black;
+        font-weight: 700;
+        font-kerning: normal;
+        font-variant: petite-caps;" -->
+      <h1 class="fa-Button fa-Button--secondary fa-NewPricing-Features-compare-btn">Choose Category</h1>
+
+      <!-- <div> -->
+      <form [formGroup]="searchForm" (ngSubmit)="onSubmit()" class="form-inline my-2 my-lg-0"
+        style=" padding: 2px 2px 2px 2px;">
+        <input class="form-control mr-sm-2 mid" type="search" placeholder="Search..." aria-label="Search"
+          formControlName="category" onfocus="this.value=''">
+        <button type="submit"
+          style="border: none ; background-color: rgba(161, 159, 166, 0) ; border-color: black; padding: 0px 0px 0px 0px;">
+          <!-- <mat-icon aria-hidden="false" aria-label="Example search icon" style="color: white;
+            font-weight: bolder;
+            font-size: xx-large;">search</mat-icon> -->
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Categories cards section starts -->
+
+  <div class="row" >
+    <div class=".col-6 .col-md-4" style="grid-gutter-width : 60px !important">
+      <mat-card class="example-card zoom" style="border-radius: 23px!important; " >
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>General Knowledge</mat-card-title>
+          <mat-card-subtitle></mat-card-subtitle>
+        </mat-card-header>
+        <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+        <mat-card-content>
+          <p style="
+          margin-top: 10px;
+      ">
+            This is the General Knowledge section for quiz
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="row">
+            <div class="col" style="text-align: center;">
+              <button mat-raised-button color="primary" (click)="openDialog()" style="background-color:rgb(0, 204, 0)">Take
+                Quiz!</button>
+            </div>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <div class=".col-6 .col-md-4">
+      <mat-card class="example-card zoom" style="border-radius: 23px!important;">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>General Knowledge</mat-card-title>
+          <mat-card-subtitle></mat-card-subtitle>
+        </mat-card-header>
+        <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+        <mat-card-content>
+          <p style="
+          margin-top: 10px;
+      ">
+            This is the General Knowledge section for quiz
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="row">
+            <div class="col" style="text-align: center;">
+              <button mat-raised-button color="primary" (click)="openDialog()" style="background-color:rgb(0, 204, 0)">Take
+                Quiz!</button>
+            </div>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <div class=".col-6 .col-md-4">
+      <mat-card class="example-card zoom" style="border-radius: 23px!important;">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>General Knowledge</mat-card-title>
+          <mat-card-subtitle></mat-card-subtitle>
+        </mat-card-header>
+        <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+        <mat-card-content>
+          <p style="
+          margin-top: 10px;
+      ">
+            This is the General Knowledge section for quiz
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="row">
+            <div class="col" style="text-align: center;">
+              <button mat-raised-button color="primary" (click)="openDialog()" style="background-color:rgb(0, 204, 0)">Take
+                Quiz!</button>
+            </div>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

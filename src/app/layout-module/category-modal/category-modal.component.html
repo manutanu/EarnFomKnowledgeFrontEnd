@@ -1,0 +1,88 @@
+<h1 mat-dialog-title>Choose Leagues</h1>
+<mat-dialog-content class="mat-typography">
+  <div class="container">
+    <div class="row" style="margin-bottom:10px">
+
+      <!-- accordian for small level leagues -->
+      <div class="col">
+
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Small Leagues
+              </mat-panel-title>
+              <mat-panel-description>
+                Type your opponent's name
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <mat-form-field>
+              <form [formGroup]="formGroupArray[0]" (ngSubmit)="onSubmit(0)">
+                <input matInput placeholder="Username" formControlName="opponentName" style="font-size:large">
+                <button type="submit" mat-raised-button color="primary" style="background-color:#313337; float: right">Play</button>
+              </form>
+            </mat-form-field>
+
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+
+      <!--accordian for medium level Leagues -->
+      <div class="col">
+
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Medium Leagues
+              </mat-panel-title>
+              <mat-panel-description>
+                Type your opponent's name
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <mat-form-field>
+              <form [formGroup]="formGroupArray[1]" (ngSubmit)="onSubmit(1)">
+                <input matInput placeholder="Username" formControlName="opponentName" style="font-size:large">
+                <button type="submit" mat-raised-button color="primary" style="background-color:#313337; float: right">Play</button>
+              </form>
+            </mat-form-field>
+
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+
+      <!-- accordian for Large Leagues -->
+      <div class="col">
+
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Large Leagues
+              </mat-panel-title>
+              <mat-panel-description>
+                Type your opponent's name
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <mat-form-field>
+              <form [formGroup]="formGroupArray[2]" (ngSubmit)="onSubmit(2)">
+                <input matInput placeholder="Username" formControlName="opponentName" style="font-size:large">
+                <button type="submit" mat-raised-button color="primary" style="background-color:#313337; float: right" >Play</button>
+              </form>
+            </mat-form-field>
+
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+
+
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button> -->
+</mat-dialog-actions>
