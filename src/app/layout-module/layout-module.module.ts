@@ -20,7 +20,8 @@ import {
   MatExpansionModule,
   MatAutocompleteModule,
   MatStepperModule,
-  MatRadioModule
+  MatRadioModule,
+  MatSnackBarModule
 } from "@angular/material";
 
 //typescript imports
@@ -29,6 +30,9 @@ import { WalletComponent } from "./wallet/wallet.component";
 import { ProfileComponent } from "./profile/profile.component";
 import { CategoryModalComponent } from './category-modal/category-modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ActivityCenterComponent } from './activity-center/activity-center.component';
+import { FilterPipe } from './filter.pipe';
 
 
 //routing configuration
@@ -56,6 +60,11 @@ const routes: Routes = [
         path: "profile",
         component: ProfileComponent,
         // data:{animation:'stepper'}
+      },
+      {
+        path: "activity",
+        component: ActivityCenterComponent,
+        // data:{animation:'stepper'}
       }
     ]
   }
@@ -68,7 +77,9 @@ const routes: Routes = [
     QuizComponent,
     WalletComponent,
     ProfileComponent,
-    CategoryModalComponent
+    CategoryModalComponent,
+    FilterPipe,
+    ActivityCenterComponent
   ],
   imports: [
     CommonModule,
@@ -89,7 +100,8 @@ const routes: Routes = [
     MatAutocompleteModule,
     MatStepperModule,
     MatRadioModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSnackBarModule
   ],
   entryComponents: [CategoryModalComponent],
   exports: [RouterModule, ContentComponent, LayoutComponent, MatToolbarModule]

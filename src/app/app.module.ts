@@ -16,6 +16,8 @@ import { RegisterComponent } from './auth/register/register.component';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LayoutModuleModule } from './layout-module/layout-module.module';
+import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { LayoutModuleModule } from './layout-module/layout-module.module';
     LoginComponent,
     RegisterComponent,
     ForgotPasswordComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    LoadingScreenComponent,
   ],
   imports: [
     BrowserModule,

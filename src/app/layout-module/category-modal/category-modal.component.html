@@ -4,9 +4,46 @@
     <div class="row" style="margin-bottom:10px">
 
       <!-- accordian for small level leagues -->
-      <div class="col">
+      <div class="col fa-NewPricingPlan fa-NewPricingPlan--emphasized" *ngFor="let league of formGroupArray;index as i;">
+        <p *ngIf="i === 0" style="font-weight: 800;">Small Leagues </p>
+        <p *ngIf="i === 0">5 Rupees </p>
 
-        <mat-accordion>
+        <p *ngIf="i === 1" style="font-weight: 800;">Medium Leagues </p>
+        <p *ngIf="i === 1">10 Rupees </p>
+
+        <p *ngIf="i === 2" style="font-weight: 800;">Large Leagues </p>
+        <p *ngIf="i === 2" >20 Rupees </p>
+
+        <form [formGroup]="league" (ngSubmit)="onSubmit(i)">
+          <div class="form-row align-items-center">
+            <div class="col-auto">
+              <label class="sr-only" for="inlineFormInputGroup">Username</label>
+              <div class="input-group mb-2">
+                <input type="text" class="form-control" id="inlineFormInputGroup" matInput placeholder="Opponent Name"  formControlName="opponentName" [matAutocomplete]="auto">
+                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                  <mat-option *ngFor="let option of filteroption | async" [value]="option">
+                    {{option}}
+                  </mat-option>
+                </mat-autocomplete>
+              </div>
+            </div>
+            <div class="col-auto">
+              <button type="submit" class="btn btn-primary mb-4">Play</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button> -->
+</mat-dialog-actions>
+
+<!--    <mat-accordion>
           <mat-expansion-panel>
             <mat-expansion-panel-header>
               <mat-panel-title>
@@ -28,7 +65,7 @@
         </mat-accordion>
       </div>
 
-      <!--accordian for medium level Leagues -->
+
       <div class="col">
 
         <mat-accordion>
@@ -53,7 +90,7 @@
         </mat-accordion>
       </div>
 
-      <!-- accordian for Large Leagues -->
+
       <div class="col">
 
         <mat-accordion>
@@ -76,13 +113,4 @@
 
           </mat-expansion-panel>
         </mat-accordion>
-      </div>
-    </div>
-
-
-  </div>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button> -->
-</mat-dialog-actions>
+      -->

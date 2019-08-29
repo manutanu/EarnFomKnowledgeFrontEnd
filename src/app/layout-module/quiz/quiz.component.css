@@ -1,3 +1,38 @@
 .mat-radio-button ~ .mat-radio-button {
   margin-left: 16px;
+
+}
+
+
+.fa-NewPricing-Features-compare-btn {
+  border: 2px solid #e6e6e6;
+  box-shadow: none;
+}
+.fa-Button, .fa-PillBtn {
+  width: 100%;
+  margin-top: 10px;
+  -webkit-appearance: none;
+  font-weight: bolder;
+  font-size: 27px;
+  border: solid 2px white;
+  color: white;
+  /* background-image:linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%); */
+  background-color:rgba(0, 0, 0, 0);
+  box-shadow: 0 0 0 1px rgba(0,0,0,.02), 0 1px 5px 0 rgba(100,136,204,.06), 0 4px 15px 0 rgba(0,0,0,.07);
+  border-radius: 100px;
+  padding: 0 20px;
+  min-height: 45px;
+  display: -webkit-inline-box;
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-transition: background-color .15s ease,box-shadow .15s ease;
+  transition: background-color .15s ease,box-shadow .15s ease;
+}
+
+a {text-decoration: none;
+    color: #4261a2;
+    cursor: pointer;
 }

@@ -21,11 +21,29 @@ export class ContentComponent implements OnInit {
   options: User[] = [{ name: "Mritunjay " }, { name: "Tanuj" }, { name: "IronMan" }];
 
   filteredOptions: Observable<User[]>;
+  cardarray:String[]=[];
 
   constructor(public dialog: MatDialog,public modalservice:ModalService) {
     this.searchForm = new FormGroup({
       category: new FormControl("")
     });
+
+      this.cardarray.push("General Knowledge");
+      this.cardarray.push("Computer Science");
+      this.cardarray.push("Mathematics");
+      this.cardarray.push("Economics");
+      this.cardarray.push("FootBall");
+      this.cardarray.push("Video Games");
+      this.cardarray.push("Cricket");
+      this.cardarray.push("BasketBall");
+      this.cardarray.push("Table Tennis");
+      this.cardarray.push("Indian Politics");
+      this.cardarray.push("Reasoning");
+      this.cardarray.push("English");
+      this.cardarray.push("Geography");
+      this.cardarray.push("History");
+      this.cardarray.push("Morals");
+      this.cardarray.push("Hindi");
   }
 
   ngOnInit() {
@@ -60,7 +78,10 @@ export class ContentComponent implements OnInit {
 
   //method for searching Category
   onSubmit() {
-    console.log(this.searchForm.value.category);
+    console.log(this.searchForm.value["category"]);
     console.log(this.searchForm);
+    this.categorytosearch=this.searchForm.value["category"];
   }
+
+  categorytosearch:string;
 }

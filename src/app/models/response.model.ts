@@ -40,3 +40,47 @@ export class errorResponse {
 
 }
 
+export class RegistrationModel{
+  username;
+  password;
+  email;
+  completeName;
+
+  constructor(username,password,email,completename){
+    this.username=username;
+    this.password=password;
+    this.email=email;
+    this.completeName=completename;
+  }
+}
+
+export class LoginModel{
+  username;
+  password;
+
+  constructor(username,password){
+    this.username=username;
+    this.password=password;
+  }
+
+}
+
+//model for Session Object
+export class SessionModel{
+  token;
+  username;
+  userid;
+
+
+  constructor(token, userid , username){
+      this.username=username;
+      this.userid=userid;
+      this.token=token;
+  }
+
+}
+
+export class JwtResponse{
+  userid;
+  token;
+}

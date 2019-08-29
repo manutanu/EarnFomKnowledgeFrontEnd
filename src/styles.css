@@ -3,7 +3,7 @@
 
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 15px;
 }
 
 /* Track */
@@ -14,9 +14,38 @@
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: rgba(101, 91, 104, 0.328);
+  border-radius:50px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background:   rgb(0, 0, 0)
+  background:   rgb(154, 85, 245) ;
+  border-radius:50px;
+}
+
+.snack-bar-error{
+  background-color:rgb(255, 0, 0);
+  color:rgb(255, 255, 255);
+  font-size:x-large!important;
+  font-weight:bold;
+}
+
+.snack-bar-error button {
+color:black;
+background-color:white;
+border-radius:50px;
+}
+
+.snack-bar-success{
+  background-color:rgb(8, 197, 55);
+  color:black;
+  font-size:xx-large!important;
+  font-weight:bold;
+  padding:10px 10px 10px 10px ;
+}
+
+.snack-bar-success button{
+  background-color: white;
+  color: black;
+  border-radius:50px;
 }

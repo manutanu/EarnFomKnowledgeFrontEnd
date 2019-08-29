@@ -1,18 +1,24 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row">
     <div class="col">
-      <h2 style="padding : 0px 0px 0px 0px ; text-align:center">Questions</h2>
+      <!-- style="padding : 0px 0px 0px 0px ; text-align:center"  -->
+      <h2 class="fa-Button fa-Button--secondary fa-NewPricing-Features-compare-btn">Questions</h2>
     </div>
   </div>
+
   <div class="row" style="height:400px">
     <div class="col" style="margin-top:40px ; text-align:center">
-      <mat-horizontal-stepper linear #stepper >
+      <mat-horizontal-stepper linear #stepper style="border-radius: 44px;">
         <div *ngFor="let formgroupt of formGroupArray ; let i = index">
           <mat-step [stepControl]="formgroupt" [editable]="isEditable">
-            <div class="container-fluid" style="margin-top:40px">
+            <div class="container-fluid" style="margin-top:40px ;padding-top: 44px;
+    padding-bottom: 44px; ">
               <div class="row">
                 <div class="col">
-                  <h4>Problem statement is here ?</h4>
+                  <h4 style="text-align:center ; padding:0px 0px 0px 0px ;">Problem statement is here Problem statement
+                    is here Problem statement is here Problem statement is here Problem statement is here Problem
+                    statement is here Problem statement is here Problem statement is here Problem statement is here
+                    Problem statement is here Problem statement is here ?</h4>
                 </div>
               </div>
               <div class="row">
@@ -20,16 +26,17 @@
                   <form [formGroup]="formgroupt">
                     <ng-template matStepLabel></ng-template>
                     <!-- <mat-form-field> -->
-                      <!-- <input matInput placeholder="Fill the right ans" formControlName="name" required> -->
-                      <mat-radio-group aria-label="Select an option" formControlName="name">
-                          <mat-radio-button value="1" >Option 1</mat-radio-button>
-                          <mat-radio-button value="2" >Option 2</mat-radio-button>
-                          <mat-radio-button value="3" >Option 3</mat-radio-button>
-                          <mat-radio-button value="4" >Option 4</mat-radio-button>
-                      </mat-radio-group>
+                    <!-- <input matInput placeholder="Fill the right ans" formControlName="name" required> -->
+                    <mat-radio-group aria-label="Select an option" formControlName="name">
+                      <mat-radio-button value="1">Option 1</mat-radio-button>
+                      <mat-radio-button value="2">Option 2</mat-radio-button>
+                      <mat-radio-button value="3">Option 3</mat-radio-button>
+                      <mat-radio-button value="4">Option 4</mat-radio-button>
+                    </mat-radio-group>
                     <!-- </mat-form-field> -->
                     <div>
-                      <button mat-button matStepperNext class="btn btn-lg btn-primary">Next</button>
+                      <button mat-button (click)="moveStepperNext()" class="btn btn-lg btn-primary"
+                        style="background-color:rgb(99, 33, 184) ; color:white">Next</button>
                     </div>
                   </form>
                 </div>
@@ -37,23 +44,26 @@
             </div>
           </mat-step>
         </div>
-        <mat-step>
+        <mat-step visible="hidden" style="margin-top:40px ;padding-top: 44px;
+        padding-bottom: 44px; ">
           <!-- <ng-template matStepLabel></ng-template> -->
           <h4>You are now done.</h4>
           <div>
             <!-- <button mat-button matStepperPrevious>Back</button> -->
-            <button mat-button (click)="processResults()" class="btn btn-lg btn-primary">Submit</button>
+            <button mat-button (click)="processResults()" class="btn btn-lg btn-primary"
+              style="background-color:rgb(99, 33, 184);color:white">Submit</button>
           </div>
         </mat-step>
       </mat-horizontal-stepper>
-    </div>
 
+    </div>
+    <div class="col" style="text-align:center">
+        <h1 style="font-size: 5.5rem;">{{countervariable}}</h1>
+      </div>
   </div>
 
-  <div class="row">
-    <div class="col" style="text-align:center">
-      <h1>Timer</h1>
-    </div>
+  <div class="row" style="margin-top:20px">
+
   </div>
 
 
