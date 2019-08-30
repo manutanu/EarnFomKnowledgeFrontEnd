@@ -4,23 +4,35 @@
 /* width */
 ::-webkit-scrollbar {
   width: 15px;
+  visibility: hidden;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
+  visibility: hidden;
+}
+
+
+::-webkit-scrollbar-track:hover {
+  background: #f1f1f1;
+  visibility: visible;
+  transition: ease 0.6s;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: rgba(101, 91, 104, 0.328);
   border-radius:50px;
+  visibility: hidden;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
+  visibility: visible;
   background:   rgb(154, 85, 245) ;
   border-radius:50px;
+  transition: ease 0.6s;
 }
 
 .snack-bar-error{

@@ -17,15 +17,15 @@
 }
 
 @keyframes example {
-  0%   {opacity:0;transform: scale(0, 0);}
+  0%   {opacity:1;transform: scale(0, 0);filter:blur(20px)}
   /* 50%  {opacity: 0.5;transform: scale(0.6, 0.6);} */
-  100% {opacity: 1;transform: scale(1, 1);}
+  100% {opacity: 1;transform: scale(1, 1);filter:blur(0px)}
 }
 
 @-webkit-keyframes example {
-  0%   {opacity:0;transform: scale(0, 0);}
+  0%   {opacity:1;transform: scale(0, 0);filter:blur(20px)}
   /* 50%  {opacity: 0.5;transform: scale(0.6, 0.6);} */
-  100% {opacity: 1;transform: scale(1, 1);}
+  100% {opacity: 1;transform: scale(1, 1);filter:blur(0px)}
 }
 
 

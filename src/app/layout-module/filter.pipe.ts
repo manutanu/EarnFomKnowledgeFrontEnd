@@ -1,4 +1,6 @@
  import { Pipe, PipeTransform } from '@angular/core';
+import { Category } from '../models/response.model';
+import { stringify } from '@angular/compiler/src/util';
 
 @Pipe({
   name: 'filter'
@@ -14,6 +16,7 @@ export class FilterPipe implements PipeTransform {
       // console.log("here i am");
       return value;
     }
+
 
     if(filterstring.length === 0)
     return value;

@@ -1,7 +1,7 @@
 //angular imports
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatInputModule} from '@angular/material';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -17,6 +17,7 @@ import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LayoutModuleModule } from './layout-module/layout-module.module';
 import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
+import { AuthInterceptor } from './auth.interceptor';
 
 
 @NgModule({
@@ -40,7 +41,9 @@ import { LoadingScreenComponent } from './loading-screen/loading-screen.componen
     LayoutModuleModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor,multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

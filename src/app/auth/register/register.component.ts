@@ -26,6 +26,12 @@ export class RegisterComponent implements OnInit {
 
   constructor(private http:HttpClient,private router:Router,private loadingScreenService:LoadingscreenService,private _snackBar:MatSnackBar
     ) {
+
+      //intializing already present values
+      sessionStorage.setItem("usersession",null);
+      sessionStorage.setItem("verified","false");
+      sessionStorage.setItem("usernamesList",null);
+
     this.signupForm = new FormGroup({
       username:new FormControl(''),
       password:new FormControl(''),
@@ -55,29 +61,42 @@ export class RegisterComponent implements OnInit {
           this.registerresponse=data;
           if(this.registerresponse.status.length>0){
             if(this.registerresponse.status === 'SUCCESS'){
-            this.registerflag=true;
+            this.openSnackBarSuccess("Verification Mail has been sent on your email address Please verify your account !","close");
             this.router.navigate(['/login']);
             }else if(this.registerresponse.status === 'Username'){
-              this.openSnackBar("This Username is already occupied !","close");
+              this.openSnackBarError("This Username is already occupied !","close");
             }else if(this.registerresponse.status === 'Useremail'){
-              this.openSnackBar("This email is already occupied !","close");
+              this.openSnackBarError("This email is already occupied !","close");
             }else if(this.registerresponse.status === 'ADDRESS'){
-              this.openSnackBar("This address is not a valid email address !","close");
+              this.openSnackBarError("Email Can't be sent at the moment Please try again later !","close");
+            }else if(this.registerresponse.status === 'PARSE'){
+              this.openSnackBarError("This address is not a valid email address !","close");
+            }else if(this.registerresponse.status === 'ERROR'){
+              this.openSnackBarError("Something went wrong on our side ! dont worry we will be back soon ","close");
             }
           }
           this.loadingScreenService.stopLoading();
       },
       error => {
-          window.alert("Sorry you are not in our family ");
+          this.openSnackBarError("Something went wrong on our side ! dont worry we will be back soon ","close");
           this.loadingScreenService.stopLoading();
       }
       );
   }
 
-  openSnackBar(message: string,action:string) {
+  //for error messages snackbar
+  openSnackBarError(message: string,action:string) {
     this._snackBar.open(message, action, {
       duration: 10000,
       panelClass: ['snack-bar-error']
+    });
+  }
+
+  //for success messages snackbar
+  openSnackBarSuccess(message: string,action:string) {
+    this._snackBar.open(message, action, {
+      duration: 10000,
+      panelClass: ['snack-bar-success']
     });
   }
 

@@ -48,7 +48,7 @@ export class LayoutComponent implements OnDestroy {
   // }
 
   logout(){
-    sessionStorage.setItem("usersession","");
+    sessionStorage.setItem("usersession",null);
     sessionStorage.setItem("verified","false");
     this.router.navigate(['/login']);
   }

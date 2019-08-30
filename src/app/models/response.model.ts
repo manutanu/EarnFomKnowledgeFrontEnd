@@ -67,20 +67,56 @@ export class LoginModel{
 
 //model for Session Object
 export class SessionModel{
-  token;
-  username;
-  userid;
+  jwttoken;
+	userid;
+	username;
+	email;
+	completename;
+	wallet:Wallet;
+	creationDate;
+	lose;
+	win;
 
 
-  constructor(token, userid , username){
+  constructor(jwttoken, userid , username,email,completename,wallet:Wallet,creationDate,lose,win){
       this.username=username;
       this.userid=userid;
-      this.token=token;
+      this.jwttoken=jwttoken;
+      this.email=email;
+      this.completename=completename;
+      this.wallet=wallet;
+      this.creationDate=creationDate;
+      this.lose=lose;
+      this.win=win;
   }
 
 }
 
 export class JwtResponse{
-  userid;
-  token;
+  jwttoken;
+	userid;
+	username;
+	email;
+	completename;
+	wallet:Wallet;
+	creationDate;
+	lose;
+	win;
+
+}
+
+export class Wallet {
+  walletid;
+  walletmoney;
+
+  constructor(walletid,walletmoney){
+    this.walletid=walletid;
+    this.walletmoney=walletmoney;
+  }
+}
+
+//model for categories
+export class Category{
+  categoryName:string;
+  categoryid;
 }

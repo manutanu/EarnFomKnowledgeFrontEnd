@@ -11,6 +11,10 @@ export class ForgotPasswordComponent implements OnInit {
 
   forgetForm:FormGroup;
   constructor() {
+    sessionStorage.setItem("usersession",null);
+      sessionStorage.setItem("verified","false");
+      sessionStorage.setItem("usernamesList",null);
+
     this.forgetForm=new FormGroup({
       username:new FormControl(''),
       newpassword:new FormControl(''),
