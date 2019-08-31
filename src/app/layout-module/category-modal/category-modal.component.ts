@@ -4,9 +4,10 @@ import { MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { RouterLink, Router } from "@angular/router";
 import { startWith, map } from "rxjs/operators";
 import { Observable } from "rxjs";
-import { SessionModel } from 'src/app/models/response.model';
+import { SessionModel, QuizRequestModel } from 'src/app/models/response.model';
 import { HttpClient } from '@angular/common/http';
 import { SnackbarService } from 'src/app/snackbar.service';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -22,11 +23,11 @@ export class CategoryModalComponent implements OnInit {
   newoptionslist: string[] = [];
   usernamesListtemp:string[]=[];
   usersession:SessionModel;
-
-  // myControl = new FormControl();
   options: string[] = [];
   filteroption: Observable<string[]>;
   selectedCategory:string;
+  selectedLeague:number;
+  quizid:number;
 
 
   constructor(
@@ -62,21 +63,38 @@ export class CategoryModalComponent implements OnInit {
 
   onSubmit(index) {
 
-    console.log(index);
+    let requestModel:QuizRequestModel;
+    this.selectedLeague=index+1;
+    console.log(this.selectedLeague);
     console.log(this.formGroupArray[index]);
     let opponentname=this.formGroupArray[index].value["opponentName"];
-    // console.log(this.myControl.value);
+    console.log(opponentname);
 
     //call rest api to generate quiz and then send the quiz id to quizComponent
-    if(opponentname != null || opponentname!=undefined || opponentname!=""){
+    if(opponentname === null || opponentname === undefined || opponentname===""){
       //call snackbar for messages
       this.snackbarservice.openSnackBarError("choose the opponent Please !","close");
     }else{
       //call rest api for lodging quiz requests and generating quizes
+        requestModel = new QuizRequestModel(this.usersession.username,opponentname,this.selectedCategory,this.selectedLeague);
+        let obj = this.http.post(environment.urlstring+"/createQuiz",requestModel).pipe(map((data:number)=>{
+        console.log(data);
+        this.quizid = data;
+        this.router.navigate(["layout", "quiz",this.quizid,this.usersession.username]);
+      },error=>{
 
+        console.log(error);
 
-      this.router.navigate(["layout", "quiz", index]);
+      })).subscribe();
+
     }
+
+    // {
+    //   "whosharedid":"Mj07yadav",
+    //   "towhomesharedid":"stormbreaker",
+    //   "category":"General Knowledge",
+    //   "leagueid":1
+    // }
   }
 
 

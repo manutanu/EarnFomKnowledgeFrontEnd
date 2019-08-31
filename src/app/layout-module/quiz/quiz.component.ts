@@ -5,7 +5,6 @@ import {
   Routes,
   Router
 } from "@angular/router";
-import { CategoryModalComponent } from "../category-modal/category-modal.component";
 import { MatDialogRef, MatStepper } from "@angular/material";
 import { ModalService } from "../modal.service";
 import {
@@ -14,7 +13,6 @@ import {
   Validators,
   FormControl
 } from "@angular/forms";
-import { StepperSelectionEvent } from "@angular/cdk/stepper";
 import { interval } from "rxjs/internal/observable/interval";
 
 @Component({
@@ -30,26 +28,27 @@ export class QuizComponent implements OnInit,OnDestroy {
   countervariable = '0';
   sourceobservable = interval(1000);
   subscribe;
+  quizid:number;
+  quizplayername:string;
 
   @ViewChild("stepper", { static: true }) stepperGlobal: MatStepper;
 
-  constructor(
-    public modalservice: ModalService,
-    public activateRoutes: ActivatedRoute,
-    public routes: Router,
-    public _formBuilder: FormBuilder
-  ) {
-    // dialogRef.close('closed from quiz component');
-    console.log(modalservice.dialogRef === undefined ? "yess" : "NO");
+
+  constructor(public modalservice: ModalService,public activateRoutes: ActivatedRoute,public routes: Router,
+    public _formBuilder: FormBuilder)
+    {
 
     if (modalservice.dialogRef != undefined) {
+
       modalservice.dialogRef.close();
 
-      // tslint:disable-next-line: curly
     }
 
     // routes.navigate(['']);
-    else console.log(activateRoutes.params["value"]["quizid"]);
+    console.log(activateRoutes.params["value"]["quizid"]+"  ss  "+activateRoutes.params["value"]["username"]);
+    this.quizid=activateRoutes.params["value"]["quizid"];
+    this.quizplayername = activateRoutes.params["value"]["username"];
+    this.subscribeToTimer();
   }
 
   ngOnInit() {
@@ -62,6 +61,11 @@ export class QuizComponent implements OnInit,OnDestroy {
       });
       this.formGroupArray.push(tempFormgroup);
     }
+
+    //important --> setInterval(this.moveStepperNext.bind(this), 1000);
+  }
+
+  subscribeToTimer(){
 
     this.subscribe = this.sourceobservable.subscribe(val => {
       this.countervariable =""+( val % 11);
@@ -76,7 +80,10 @@ export class QuizComponent implements OnInit,OnDestroy {
       }
     });
 
-    //important --> setInterval(this.moveStepperNext.bind(this), 1000);
+  }
+
+  unsubscribeToTimer(){
+    this.subscribe.unsubscribe();
   }
 
   ngOnDestroy(): void {
@@ -103,6 +110,8 @@ export class QuizComponent implements OnInit,OnDestroy {
     console.log(this.stepperGlobal.selectedIndex);
     this.stepperGlobal.next();
     this.countervariable = "0";
+    this.unsubscribeToTimer();
+    this.subscribeToTimer();
 
   }
 }

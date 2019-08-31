@@ -120,3 +120,20 @@ export class Category{
   categoryName:string;
   categoryid;
 }
+
+
+//model for requesting quiz
+export class QuizRequestModel{
+
+    whosharedid
+    towhomesharedid
+    category
+    leagueid;
+
+    constructor(whosharedid,towhome,category,leagueid){
+      this.whosharedid=whosharedid;
+      this.towhomesharedid=towhome;
+      this.category=category;
+      this.leagueid=leagueid;
+    }
+}

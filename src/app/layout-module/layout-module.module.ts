@@ -47,7 +47,7 @@ const routes: Routes = [
         // data:{animation:'stepper'}
       },
       {
-        path: "quiz/:quizid",
+        path: "quiz/:quizid/:username",
         component: QuizComponent,
         // data:{animation:'stepper'}
       },
