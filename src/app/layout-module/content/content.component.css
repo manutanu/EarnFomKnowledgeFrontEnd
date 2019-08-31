@@ -17,7 +17,7 @@
   /* Safari 4.0 - 8.0 */
   animation-name: example;
   animation-duration: 0.8s;
-  transition: all .3s;
+
   /* for deciding how many times animation should run */
   /* animation-iteration-count: 3; */
 
@@ -74,17 +74,24 @@
 }
 
 .example-header-image {
-  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
-  background-size: cover;
-  background-color: #3f51b5;
+  /* background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg"); */
+  /* background-size: cover;
+  background-color: #3f51b5; */
   /* background-image:url(".../.../assests/download.png"); */
   /* background-image: url('https://image.shutterstock.com/image-photo/g-letter-blue-felt-collection-260nw-510886210.jpg'); */
+  background-size: cover;
+  background-color: #f6c2eb;
+  color: black;
+  font-size: x-large;
+  font-weight: 900;
+  font-family: sans-serif;
+  font-style: oblique;
 }
 
 
 input[type=search]:focus {
   width: 35%;
-  transition: all .8s;
+  transition: all 0.8s;
   box-shadow: 2px 6px 15px 0px rgba(0, 0, 0, 0.2),
     0px 8px 3px 0px rgba(0, 0, 0, 0.14), 2px 9px 4px 1px rgba(0, 0, 0, 0.12);
   height: 40px;
@@ -107,24 +114,34 @@ input[type=search]:focus {
   background-color: black;
   color: white;
   font-size:medium;
+  transition: all 0.3s;
 }
 
 
-.container:hover .example-card{
+#cards:hover .example-card{
   filter:blur(5px);
   transform:scale(0.9);
+  transition: all 0.3s;
+  transition-timing-function: ease;
 }
 
-.container .example-card:hover{
+#cards .example-card:hover{
+  z-index: 1;
   filter:blur(0px);
-  transform: scale(1.15);
-  border: solid 2px rgb(255, 255, 255);
+  transform: scale(1.12);
+  border: solid 1px rgb(255, 255, 255);
   /*(150% zoom - Note: if the zoom is too large, it will go outside of the viewport)*/
   border-radius: 0px;
   background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
   /* background-color: rgba(80, 76, 76, 0.787); */
   color: white;
   font-weight: bold;
+  transition: all 0.3s;
+}
+
+#cards .example-card:hover .example-header-image{
+  background-color: black;
+  color: white;
 }
 
 /* category classes */

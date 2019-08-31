@@ -6,6 +6,7 @@ import { startWith, map } from "rxjs/operators";
 import { Observable } from "rxjs";
 import { SessionModel } from 'src/app/models/response.model';
 import { HttpClient } from '@angular/common/http';
+import { SnackbarService } from 'src/app/snackbar.service';
 
 
 
@@ -25,13 +26,17 @@ export class CategoryModalComponent implements OnInit {
   // myControl = new FormControl();
   options: string[] = [];
   filteroption: Observable<string[]>;
+  selectedCategory:string;
 
 
   constructor(
 
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public router: Router,private http:HttpClient
+    public router: Router,private http:HttpClient,
+    private snackbarservice:SnackbarService
     ) {
+
+      this.selectedCategory=data.catname;
 
       for (let i = 0; i < 3; i++) {
       this.formGroupArray.push(
@@ -59,13 +64,19 @@ export class CategoryModalComponent implements OnInit {
 
     console.log(index);
     console.log(this.formGroupArray[index]);
-    console.log(this.formGroupArray[index].value["opponentName"]);
+    let opponentname=this.formGroupArray[index].value["opponentName"];
     // console.log(this.myControl.value);
 
     //call rest api to generate quiz and then send the quiz id to quizComponent
+    if(opponentname != null || opponentname!=undefined || opponentname!=""){
+      //call snackbar for messages
+      this.snackbarservice.openSnackBarError("choose the opponent Please !","close");
+    }else{
+      //call rest api for lodging quiz requests and generating quizes
 
 
-    this.router.navigate(["layout", "quiz", index]);
+      this.router.navigate(["layout", "quiz", index]);
+    }
   }
 
 

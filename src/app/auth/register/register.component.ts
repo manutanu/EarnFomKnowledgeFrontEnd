@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { RegistrationModel } from 'src/app/models/response.model';
 import { LoadingscreenService } from 'src/services/loadingscreen.service';
 import { MatSnackBar } from '@angular/material';
+import { SnackbarService } from 'src/app/snackbar.service';
 
 
 @Component({
@@ -24,7 +25,8 @@ export class RegisterComponent implements OnInit {
   errormessageFlagemailnotfound;
 
 
-  constructor(private http:HttpClient,private router:Router,private loadingScreenService:LoadingscreenService,private _snackBar:MatSnackBar
+  constructor(private http:HttpClient,private router:Router,private loadingScreenService:LoadingscreenService
+    ,private snackbarservice:SnackbarService
     ) {
 
       //intializing already present values
@@ -61,43 +63,28 @@ export class RegisterComponent implements OnInit {
           this.registerresponse=data;
           if(this.registerresponse.status.length>0){
             if(this.registerresponse.status === 'SUCCESS'){
-            this.openSnackBarSuccess("Verification Mail has been sent on your email address Please verify your account !","close");
+            this.snackbarservice.openSnackBarSuccess("Verification Mail has been sent on your email address Please verify your account !","close");
             this.router.navigate(['/login']);
             }else if(this.registerresponse.status === 'Username'){
-              this.openSnackBarError("This Username is already occupied !","close");
+              this.snackbarservice.openSnackBarError("This Username is already occupied !","close");
             }else if(this.registerresponse.status === 'Useremail'){
-              this.openSnackBarError("This email is already occupied !","close");
+              this.snackbarservice.openSnackBarError("This email is already occupied !","close");
             }else if(this.registerresponse.status === 'ADDRESS'){
-              this.openSnackBarError("Email Can't be sent at the moment Please try again later !","close");
+              this.snackbarservice.openSnackBarError("Email Can't be sent at the moment Please try again later !","close");
             }else if(this.registerresponse.status === 'PARSE'){
-              this.openSnackBarError("This address is not a valid email address !","close");
+              this.snackbarservice.openSnackBarError("This address is not a valid email address !","close");
             }else if(this.registerresponse.status === 'ERROR'){
-              this.openSnackBarError("Something went wrong on our side ! dont worry we will be back soon ","close");
+              this.snackbarservice.openSnackBarError("Something went wrong on our side ! dont worry we will be back soon ","close");
             }
           }
           this.loadingScreenService.stopLoading();
       },
       error => {
-          this.openSnackBarError("Something went wrong on our side ! dont worry we will be back soon ","close");
+          this.snackbarservice.openSnackBarError("Something went wrong on our side ! dont worry we will be back soon ","close");
           this.loadingScreenService.stopLoading();
       }
       );
   }
 
-  //for error messages snackbar
-  openSnackBarError(message: string,action:string) {
-    this._snackBar.open(message, action, {
-      duration: 10000,
-      panelClass: ['snack-bar-error']
-    });
-  }
-
-  //for success messages snackbar
-  openSnackBarSuccess(message: string,action:string) {
-    this._snackBar.open(message, action, {
-      duration: 10000,
-      panelClass: ['snack-bar-success']
-    });
-  }
 
 }

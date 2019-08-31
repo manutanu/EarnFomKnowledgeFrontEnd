@@ -13,7 +13,7 @@
       <form [formGroup]="searchForm" (ngSubmit)="onSubmit()" class="form-inline my-2 my-lg-0"
         style=" padding: 2px 2px 2px 2px;">
         <input class="form-control mr-sm-2 mid" type="search" placeholder="Search..." aria-label="Search"
-          [(ngModel)]="categorytosearch" formControlName="category" style="border-radius:30px; border-color:white">
+          [(ngModel)]="categorytosearch" formControlName="category" style="border-radius:30px; border-color:white ; margin-bottom:4px">
 <!-- onfocus="this.value=''" -->
         <button type="submit"
           style="border: none ; background-color: rgba(161, 159, 166, 0) ; border-color: black; padding: 0px 0px 0px 0px;">
@@ -28,11 +28,11 @@
 
   <!-- Categories cards section starts -->
 
-  <div class="row" >
+  <div class="row" id="cards">
     <div class=".col-6 .col-md-4" style="grid-gutter-width : 60px !important" *ngFor="let categoryname of categoryNameList | filter:categorytosearch">
       <mat-card class="example-card"  >
         <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
+          <div mat-card-avatar class="example-header-image"><p>{{categoryname.substring(0,1)}}</p></div>
           <mat-card-title>{{categoryname}}</mat-card-title>
           <mat-card-subtitle></mat-card-subtitle>
         </mat-card-header>
@@ -47,8 +47,8 @@
         <mat-card-actions>
           <div class="row">
             <div class="col" style="text-align: center;">
-              <button class="btn btn-primary button-design button-zoom" (click)="openDialog()"  >Take
-                Quiz!</button>
+              <button class="btn btn-primary button-design button-zoom" (click)="openDialog(categoryname)"  >Take
+                Quiz</button>
             </div>
           </div>
         </mat-card-actions>

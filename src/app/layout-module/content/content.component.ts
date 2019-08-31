@@ -10,6 +10,7 @@ import { MatSnackBar } from '@angular/material';
 import { environment } from 'src/environments/environment';
 import { Category } from 'src/app/models/response.model';
 import { LoadingscreenService } from 'src/services/loadingscreen.service';
+import { SnackbarService } from 'src/app/snackbar.service';
 
 
 export interface User {
@@ -32,8 +33,8 @@ export class ContentComponent implements OnInit {
   categoryNameList:string[]=[];
 
 
-  constructor(public dialog: MatDialog,public modalservice:ModalService,private http:HttpClient,private _snackBar:MatSnackBar,
-    private loadingScreen:LoadingscreenService) {
+  constructor(public dialog: MatDialog,public modalservice:ModalService,private http:HttpClient,
+    private loadingScreen:LoadingscreenService,private snackbarservice:SnackbarService) {
 
     this.searchForm = new FormGroup({
       category: new FormControl("")
@@ -60,7 +61,7 @@ export class ContentComponent implements OnInit {
       },error=>{
 
       this.loadingScreen.stopLoading();
-      this.openSnackBarError("Something went Wrong Can't Load data right Now !","close");
+      this.snackbarservice.openSnackBarError("Something went Wrong Can't Load data right Now !","close");
       console.log(error);
 
     })).subscribe();
@@ -72,10 +73,12 @@ export class ContentComponent implements OnInit {
   }
 
   // Method to open Modal
-  openDialog() {
+  openDialog(categoryname:string) {
 
     const componentName = CategoryModalComponent;
-    const dialogRefer = this.dialog.open(componentName);
+    const dialogRefer = this.dialog.open(componentName, {
+      data: { catname: categoryname },
+    });
     this.modalservice.dialogRef=dialogRefer;
 
     dialogRefer.afterClosed().subscribe(result => {
@@ -90,26 +93,6 @@ export class ContentComponent implements OnInit {
     console.log(this.searchForm.value["category"]);
     console.log(this.searchForm);
     this.categorytosearch=this.searchForm.value["category"];
-
-  }
-
-  //for error messages snackbar
-  openSnackBarError(message: string,action:string) {
-
-    this._snackBar.open(message, action, {
-      duration: 10000,
-      panelClass: ['snack-bar-error']
-    });
-
-  }
-
-  //for success messages snackbar
-  openSnackBarSuccess(message: string,action:string) {
-
-    this._snackBar.open(message, action, {
-      duration: 10000,
-      panelClass: ['snack-bar-success']
-    });
 
   }
 
